@@ -1,0 +1,30 @@
+{
+  "name": "mern-tw-starter",
+  "version": "1.0.0",
+  "description": "Production-ready MERN stack starter with Tailwind CSS, authentication, and modern best practices.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altf4-games/mern-tw-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/altf4-games/mern-tw-starter/issues"
+  },
+  "homepage": "https://github.com/altf4-games/mern-tw-starter#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
