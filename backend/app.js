@@ -1,5 +1,10 @@
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
+import connectDB from "./config/database.js";
+
+// Connect to MongoDB
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,6 +18,27 @@ app.get("/api/health", (_req, res) => {
   res.json({
     status: "OK",
     message: "MERN Template Backend is running!",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Database connection status endpoint
+app.get("/api/db-status", (_req, res) => {
+  const dbState = mongoose.connection.readyState;
+  const states = {
+    0: "disconnected",
+    1: "connected",
+    2: "connecting",
+    3: "disconnecting",
+  };
+
+  res.json({
+    status: "OK",
+    database: {
+      state: states[dbState],
+      host: mongoose.connection.host || "Not connected",
+      name: mongoose.connection.name || "Not connected",
+    },
     timestamp: new Date().toISOString(),
   });
 });
